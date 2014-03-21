@@ -141,7 +141,7 @@ For grunt/yeoman, you're going to need to dive into the Gruntfile.js to determin
 ###Deploying your app the "less easy" way
 We can use nginx to do all of the hardcore server stuff for us. Nginx is a server software that's tested and true, and handles a lot of things very well, including things like SSL (https). We're going to use Nginx as a "reverse proxy" for our app, meaning Nginx will listen for port 80 for us, then forward any relevant requests to our app.
 
-####Installing/Configruing Nginx
+####Installing/Configuring Nginx
 
 ```
 sudo apt-get install nginx
