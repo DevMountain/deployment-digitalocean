@@ -198,4 +198,6 @@ app.listen(process.env.EXPRESS_PORT || 8888);
 
 This way, EXPRESS_PORT will only be defined on our droplet, and will thus resolve to 80, while locally it will fall back to 8888.
 
+You can use this same principle anywhere in your code where you have sensitive information you don't want saved in Github and that might differ from a local to a production environment. This could include database passwords, API keys/secrets, or ports.
+
 *Additional resource by Chris Esplin: http://www.christopheresplin.com/single-page-app-architecture-angular-deploy*
