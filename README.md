@@ -164,7 +164,7 @@ sudo npm install -g forever
 The commands you need to remember are these:
 
 ####`sudo -E forever start <script_name>`
-This command starts a node script. The `-E` option will be important in a moment.
+This command starts a node script. The `-E` option will be important in a moment, because `-E` means that the root user (sudo) will pick up any environment variables that you have set. We'll set one in a future step.
 
 ####`sudo forever list`
 Lists all currently running scripts. Important because you can see the log files associated with each script. Use `tail -f <path/to/log/file>` to watch the file.
