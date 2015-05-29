@@ -38,7 +38,7 @@ ssh root@107.251.123.654
 ```
 You will be prompted for the root password.
 
-##How to add a user to your Ubuntu machine
+##Optional: How to add a user to your Ubuntu machine
 
 It is not generally advisable to access machines habitually as the user "root." The best practice generally is to utilize another user with less privileges, and then just use `sudo` when you need to.
 
@@ -169,7 +169,7 @@ This command starts a node script. The `-E` option will be important in a moment
 ####`sudo forever list`
 Lists all currently running scripts. Important because you can see the log files associated with each script. Use `tail -f <path/to/log/file>` to watch the file.
 
-####`sudo forever restartAll`
+####`sudo forever restartall`
 Restarts all currently running scripts. Important because you'll need to do this anytime the code changes (for example, from a `git pull`.
 
 ####`sudo forever stopall`
