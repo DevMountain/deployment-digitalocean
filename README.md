@@ -95,19 +95,15 @@ Now you can SSH into your droplet with your username/SSH public key and have sud
 
 ##How to install Node.js on your Droplet
 * SSH into your droplet with a user that has sudo privileges (see above)
-* The Ubuntu package manager, "apt-get" is a very handy tool. It will install almost anything we need. But with Node.js, we need a few extra steps:
+* The Ubuntu package manager, "apt-get" is a very handy tool. It will install almost anything we need. But with Node.js, we need a few extra steps.
 
-```
-sudo apt-get update
-sudo apt-get install -y python-software-properties python g++ make
-sudo add-apt-repository ppa:chris-lea/node.js
-sudo apt-get update
-sudo apt-get install nodejs
-```
+```sudo apt-get update```
 
-The whole reason we're doing the above commands is because by default, apt-get installs a pretty old version of Node.js.
+This ensures our software manager apt-get is up-to-date.
 
-Here's what we just did. The first line (update) updates the package manager. Always the first thing you do on an Ubuntu box. The second line installs some basic software we'll need to continue. The third line (add-apt-repository) adds a new source list that includes the latest Node packages. Then we update apt-get again, and finally install nodejs.
+To install Node.js, follow the steps [outlined here](https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions).
+
+This will ensure we have the latest version of Node.js installed.
 
 To double check everything worked, check which version you have installed by typing `node --version`. It should be greater than 0.10. (It also includes npm, which doesn't happen when you install using the default source list for apt-get).
 
