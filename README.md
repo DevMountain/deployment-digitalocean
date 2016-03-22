@@ -197,3 +197,7 @@ This way, EXPRESS_PORT will only be defined on our droplet, and will thus resolv
 You can use this same principle anywhere in your code where you have sensitive information you don't want saved in Github and that might differ from a local to a production environment. This could include database passwords, API keys/secrets, or ports.
 
 *Additional resource by Chris Esplin: http://www.christopheresplin.com/single-page-app-architecture-angular-deploy*
+
+## Copyright
+
+© DevMountain LLC, 2016. Unauthorized use and/or duplication of this material without express and written permission from DevMountain, LLC is strictly prohibited. Excerpts and links may be used, provided that full and clear credit is given to DevMountain with appropriate and specific direction to the original content.
