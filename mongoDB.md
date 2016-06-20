@@ -1,4 +1,6 @@
 # Create Users in Mongo
+
+We'll have to create a user in the mongoDB on the server.  
 ```
 db.createUser({user:"userName", pwd:"Password",roles:[{role:"readWrite",db:"databaseName"}]})
 
