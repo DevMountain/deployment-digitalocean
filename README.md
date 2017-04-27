@@ -3,7 +3,7 @@ Deploying a Node.js app to DigitalOcean
 
 These steps assume that you've already created a DigitalOcean account.
 
-##How to add a SSH key
+## How to add a SSH key
 See if you already have an ssh public key generated:
 
 ```
@@ -28,7 +28,7 @@ cat ~/.ssh/id_rsa.pub
 
 Copy the text spit out by the cat command and paste it into the large textarea that shows up in DigitalOcean when you click SSH Keys > Add SSH Key. Give it a name, something like "My Macbook Pro."
 
-##How to SSH into your machine
+## How to SSH into your machine
 * Make sure you've completed the payment form and created a Droplet (you can use all the defaults) and that you have your *root password* that you should have received via email.
 * use the following command to SSH into the machine instance: `ssh root@<ip address>`
 For example:
@@ -38,7 +38,7 @@ ssh root@107.251.123.654
 ```
 You will be prompted for the root password.
 
-##Optional: How to add a user to your Ubuntu machine
+## Optional: How to add a user to your Ubuntu machine
 
 It is not generally advisable to access machines habitually as the user "root." The best practice generally is to utilize another user with less privileges, and then just use `sudo` when you need to.
 
@@ -50,7 +50,7 @@ Here's an example:
 useradd -m -s /bin/bash -U homersimpson
 ```
 
-###Optional: remove password restriction for new user
+### Optional: remove password restriction for new user
 
 If you're like me, you hate throwing passwords around. I prefer to use my SSH key only and not have to rely on stored passwords. (In an enterprise environment, this would be different).
 
@@ -107,7 +107,7 @@ This will ensure we have the latest version of Node.js installed.
 
 To double check everything worked, check which version you have installed by typing `node --version`. It should be greater than 0.10. (It also includes npm, which doesn't happen when you install using the default source list for apt-get).
 
-##Installing Git on your Droplet
+## Installing Git on your Droplet
 * OK, this is tough ... get ready ...
 
 ```
@@ -116,7 +116,7 @@ sudo apt-get install git
 
 That's it. Expecting more? apt-get is pretty smooth.
 
-##Running your app from git on your droplet
+## Running your app from git on your droplet
 
 Here's where it gets tricky. Or at least, there are a lot of possible ways to do what's coming up. I'll show you an easy way, and more involved way. But first, let's check out your project via git so it's really easy to update.
 
@@ -125,7 +125,7 @@ Here's where it gets tricky. Or at least, there are a lot of possible ways to do
 
 Now, when you make updates while you're developing locally, you'll push to github. Then to update the production server, you'll SSH into that machine and then `pull` from that server to get the changes.
 
-###Deploying your app the "easy" way
+### Deploying your app the "easy" way
 Basically, we need to get your app running and listening on port 80 for web requests from your user's browsers. How you get your app listening on port 80 varies greatly depending on what you're using (express, sails, grunt, etc.). 
 
 For SailsJS you need to edit the config/local.js file to specify a different port (80) than the default. You can read more about running SailsJS in production [here](http://sailsjs.org/#!documentation/deployment). 
@@ -134,7 +134,7 @@ For a basic express app, if you're specifying the port somewhere in your app.js 
 
 For grunt/yeoman, you're going to need to dive into the Gruntfile.js to determine how best to run and deploy your app from port 80. This might be challenging, so you could move onto the next section ...
 
-##Pointing a Domain to your Droplet
+## Pointing a Domain to your Droplet
 
 First, you need to own the domain. Purchase it through GoDaddy, BlueHost, Namecheap, or whatever domain purchasing service you like best.
 
@@ -148,9 +148,9 @@ Now, go into the DigitalOcean control panel and configure your domain. There are
 
 A useful tool for checking your nameservers and DNS propagation: https://www.whatsmydns.net/
 
-##Managing your Droplet and App
+## Managing your Droplet and App
 
-###Forever
+### Forever
 Forever is a node module that ensures that a script continues to run, even if the SSH'd user logs out. To install forever, type:
 
 ```
@@ -159,19 +159,19 @@ sudo npm install -g forever
 
 The commands you need to remember are these:
 
-####`sudo -E forever start <script_name>`
+#### `sudo -E forever start <script_name>`
 This command starts a node script. The `-E` option will be important in a moment, because `-E` means that the root user (sudo) will pick up any environment variables that you have set. We'll set one in a future step.
 
-####`sudo forever list`
+#### `sudo forever list`
 Lists all currently running scripts. Important because you can see the log files associated with each script. Use `tail -f <path/to/log/file>` to watch the file.
 
-####`sudo forever restartall`
+#### `sudo forever restartall`
 Restarts all currently running scripts. Important because you'll need to do this anytime the code changes (for example, from a `git pull`.
 
-####`sudo forever stopall`
+#### `sudo forever stopall`
 Stops all currently running scripts.
 
-###Environment Variables
+### Environment Variables
 Often, you'll want to have settings that differ in testing from production. For example, which port should Express listen on? You'd want your app to listen on port 80 in production, but something like 8888 locally. We can accomplish this with environment variables.
 
 To set an environment variable on the Linux OS on your droplet, edit the .bash_profile file in the user's home directory.
